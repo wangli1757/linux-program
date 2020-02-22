@@ -24,7 +24,7 @@ clean:
 
 
 p:
-	@echo SRC is:$(SRC)
-	@echo OBJS is:$(OBJS)
-.PHONY:all install clean
+	@echo "SRC is:$(SRC)"
+	@echo "OBJS is:$(OBJS)"
+.PHONY:all install clean p
 

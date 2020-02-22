@@ -26,9 +26,9 @@ clean:
 	@for d in $(MAKEDIRS); do (cd $$d && $(MAKE) clean); done
 
 p:
-	@echo $(MAKEDIRS)
+	@echo "MakeDirs:$(MAKEDIRS)"
 cleanbin:
 	-$(RM) -r $(BINDIR)/* 
 	
 
-.PHONY: default install clean
+.PHONY: default install clean p
