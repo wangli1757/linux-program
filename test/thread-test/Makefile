@@ -2,9 +2,9 @@ CURRENTDIR := $(shell pwd)
 
 TARGET:=$(addsuffix .out,$(notdir $(CURRENTDIR)))
 
-OBJDIRS :=$(shell find $(CURRENTDIR) -maxdepth 10 -type d)
+DIRS :=$(shell find $(CURRENTDIR) -maxdepth 10 -type d)
 
-SRC := $(foreach dir,$(OBJDIRS),$(wildcard $(dir)/*.c))
+SRC := $(foreach dir,$(DIRS),$(wildcard $(dir)/*.c))
 
 OBJS :=$(patsubst %.c,%.o,$(SRC))
 

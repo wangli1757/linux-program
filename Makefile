@@ -8,12 +8,13 @@ BINDIR :=$(CURRENTDIR)/bin
 
 export INCLUDES CFLAGS BINDIR
 
-EXCLUDEDIRS :=$(CURRENTDIR)/bin $(CURRENTDIR)/lib $(CURRENTDIR)
+EXCLUDEDIRS :=$(CURRENTDIR)/bin $(CURRENTDIR)/lib $(CURRENTDIR)/.git $(CURRENTDIR)
 
-SUBDIRS := $(shell find $(CURRENTDIR) -maxdepth 10 -type d)
 
-MAKEDIRS :=$(filter-out $(EXCLUDEDIRS),$(SUBDIRS))
+CURDIRS := $(shell find $(CURRENTDIR) -maxdepth 1 -type d)
+SUBDIRS :=$(filter-out $(EXCLUDEDIRS),$(CURDIRS))
 
+MAKEDIRS :=$(foreach dir,$(SUBDIRS),$(shell find $(dir) -maxdepth 10 -type d))
 
 default:
 	@for d in $(MAKEDIRS); do (cd $$d && $(MAKE)); done
